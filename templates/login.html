@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+<div class="container h-100 ">
+    <div class="row h-100">
+        <div class="col my-auto">    
+            <h1 class="text-center">Dark Web Message Board</h1>
+            <div class="col-3 mx-auto">                
+                    <div class="text-center">                    
+                        <img id="profile-img" class="rounded-circle profile-img-card" src="{{ url_for('static', filename='anon.png')}}" />
+                        <p id="profile-name" class="profile-name-card"></p>
+                        <form  class="form-signin" onSubmit="return false;">                            
+                                <input type="password" name="password" id="inputPassword" class="form-control form-group" placeholder="password" required autofocus>
+                                <button class="btn btn-lg btn-secondary btn-block btn-signin" type="submit">Let me in</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

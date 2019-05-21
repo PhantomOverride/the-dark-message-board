@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='board.css') }}">
+    {% if posts %}
+        <div class="container">
+        <div class="card bg-dark text-white mt-5 mb-1 text-center">
+            <div class="card-body">
+                <h3 class="card-title">Доска сообщение</h3>
+            </div>
+        </div>
+        {% for post in posts %}
+            <div class="card bg-dark mb-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="flex-column align-self-center">
+                                <img src="{{ url_for('static', filename='%s.png' % post.avatar_id) }}" class="img-fluid" />
+                                <p style="padding-left: 20px">
+                                    {{post.name}}<br />
+                                    <small>Role: {{post.role}}</small><br />
+                                    <small>Count: {{post.post_count}}</small>
+                                </p>
+                            </div>
+                        </div>                        
+                        <div class="col-md-10">
+                            <p>{{post.message}}</p>                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% else %}    
+    <center>
+        <h1>No board with that ID!</h1>
+        <img src="{{ url_for('static', filename='skull.png') }}" />
+    </center>    
+    
+    {% endif %}
+
+
+
+{% endblock %}
